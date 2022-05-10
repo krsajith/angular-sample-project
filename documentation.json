@@ -242,7 +242,7 @@
         },
         {
             "name": "BaseComponent",
-            "id": "component-BaseComponent-baefb71ceaf2742b2d49c1626def6c87dc66ca980acea78b2724daa0563c1f9fb0407bf0884ccdc39d869b07dc2d0ee562d1afb415a7f72fd368e95548625c09",
+            "id": "component-BaseComponent-a437429bcd94582043806b245878156c1eab692ca3d21fc8533eaa9703219d2c20036a4fd67ae17878ea73b0076e08de935784566e6a9e1bf57877306b726038",
             "file": "src/app/base/base.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -290,7 +290,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component,  OnDestroy } from '@angular/core';\nimport { Subject } from 'rxjs';\n\n@Component({\n  selector: 'app-base',\n  template: `\n    <p>\n      base works!\n    </p>\n  `,\n  styleUrls: ['./base.component.scss']\n})\nexport class BaseComponent implements OnDestroy {\n\n  destroy$ = new Subject();\n\n\n  ngOnDestroy() {\n    this.destroy$.next(undefined);\n    this.destroy$.complete();\n  }\n\n\n}\n",
+            "sourceCode": "import { Component,  OnDestroy } from '@angular/core';\nimport { Subject } from 'rxjs';\n\n@Component({\n  selector: 'app-base',\n  template: `\n    <p>\n      base works!\n    </p>\n  `,\n  styleUrls: ['./base.component.scss']\n})\nexport class BaseComponent implements OnDestroy {\n\n  destroy$ = new Subject();\n\n\n  ngOnDestroy() {\n    // this.destroy$.next(undefined);\n    this.destroy$.complete();\n  }\n\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -767,7 +767,7 @@
         },
         {
             "name": "WorkflowStepComponent",
-            "id": "component-WorkflowStepComponent-7134bf5854073e20a9711b7d3053663a47fdf10ab2d49dd9f93c91ff3303f1500cc4b77f7b846506265f8f0b1ae6893fee88395f10fb341c287877d3f3ab153b",
+            "id": "component-WorkflowStepComponent-21cdfc26deda6b0f12ae1c4e7f64468e67efeda8762003401c5023f90386382102e6a73b26e4e9ccb0e9f61ba8fc813ba2fd7cb44916c99bc090f3eccb72af8b",
             "file": "src/app/workflow-step/workflow-step.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -793,7 +793,7 @@
             "propertiesClass": [
                 {
                     "name": "stepForm",
-                    "defaultValue": "this.fb.group({\n    role: [''],\n    actionName: [''],\n    sequence: [''],\n    postAction: [''],\n    mandatory: [true],\n    sla: [''],\n  })",
+                    "defaultValue": "this.fb.group({\n    role: [''],\n    actionName: [''],\n    sequence: [''],\n    postAction: [''],\n    mandatory: [true],\n    sla: ['']\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -966,7 +966,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, forwardRef, OnInit } from '@angular/core';\nimport { FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { takeUntil } from 'rxjs';\nimport { BaseConrolComponent } from '../base-conrol/base-conrol.component';\n\n@Component({\n  selector: 'app-workflow-step',\n  templateUrl: './workflow-step.component.html',\n  styleUrls: ['./workflow-step.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => WorkflowStepComponent),\n      multi: true\n    }\n  ]\n})\nexport class WorkflowStepComponent extends BaseConrolComponent implements OnInit {\n\n\n  stepForm = this.fb.group({\n    role: [''],\n    actionName: [''],\n    sequence: [''],\n    postAction: [''],\n    mandatory: [true],\n    sla: [''],\n  });\n\n    //       \"\": \"string\",\n  //       \"\": \"string\",\n  //       \"\": 0,\n  //       \"desiredEndStatus\": {\n  //         \"additionalProp1\": \"string\",\n  //         \"additionalProp2\": \"string\",\n  //         \"additionalProp3\": \"string\"\n  //       },\n  //       \"\": true,\n  //       \"\": \"string\"\n  //     }\n\n\n  writeValue(obj: any): void {\n    // throw new Error('Method not implemented.');\n  }\n\n\n  constructor(private fb: FormBuilder) { \n    super()\n  }\n\n  ngOnInit(): void {\n    const self = this;\n    this.stepForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {\n      self.onChange(value);\n    });\n  }\n\n}\n",
+            "sourceCode": "import { Component, forwardRef, OnInit } from '@angular/core';\nimport { FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';\nimport { takeUntil } from 'rxjs';\nimport { BaseConrolComponent } from '../base-conrol/base-conrol.component';\n\n@Component({\n  selector: 'app-workflow-step',\n  templateUrl: './workflow-step.component.html',\n  styleUrls: ['./workflow-step.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => WorkflowStepComponent),\n      multi: true\n    }\n  ]\n})\nexport class WorkflowStepComponent extends BaseConrolComponent implements OnInit {\n\n\n  stepForm = this.fb.group({\n    role: [''],\n    actionName: [''],\n    sequence: [''],\n    postAction: [''],\n    mandatory: [true],\n    sla: ['']\n  });\n\n    //       \"\": \"string\",\n  //       \"\": \"string\",\n  //       \"\": 0,\n  //       \"desiredEndStatus\": {\n  //         \"additionalProp1\": \"string\",\n  //         \"additionalProp2\": \"string\",\n  //         \"additionalProp3\": \"string\"\n  //       },\n  //       \"\": true,\n  //       \"\": \"string\"\n  //     }\n\n\n  writeValue(obj: any): void {\n    // throw new Error('Method not implemented.');\n  }\n\n\n  constructor(private fb: FormBuilder) { \n    super()\n  }\n\n  ngOnInit(): void {\n    const self = this;\n    this.stepForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {\n      self.onChange(value);\n    });\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1117,21 +1117,21 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  production: true\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
             },
             {
                 "name": "Large",
@@ -1298,18 +1298,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
-                }
-            ],
             "src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -1320,6 +1308,18 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
