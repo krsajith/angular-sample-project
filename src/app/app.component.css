@@ -1,0 +1,13 @@
+
+
+  .flex {
+      display: flex;
+  }
+
+  .flex-row {
+        flex-direction: row;
+  } 
+  
+  .p-1 {
+    padding: 0.25rem;
+  }
